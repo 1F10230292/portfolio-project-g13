@@ -5,6 +5,9 @@
 venv環境に入るためのコマンド
 python -m venv venv
 source venv/bin/activate
+（ubuntuの場合）python3 -m venv venv
+source venv/bin/activate
+
 
 サイト閲覧時
 python manage.py runserver
