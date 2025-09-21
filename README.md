@@ -21,6 +21,7 @@ deactivate  # 仮想環境から抜ける
 
 python manage.py runserver
 
+
 コード変更する前に必ず
 
 git pull origin main
