@@ -18,21 +18,31 @@ deactivate  # 仮想環境から抜ける
 
 
 サイト閲覧時
+
 python manage.py runserver
 
 コード変更する前に必ず
+
 git pull origin main
+
 誰も作業していないかの確認をする
 
 変更したら連絡をして
+
 git add .
+
 git commit -m '○○の追加'
+
 git push origin main
 
 編集して動かなかった場合
+
 git add .
+
 git commit -m ''
+
 git reset --hard HEAD~1
+
 これをすることで動かなかったコードをgitに保存しつつ追加したコードの削除を行ってくれる
 
 
