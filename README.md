@@ -7,7 +7,7 @@ python -m venv venv
 source venv/bin/activate
 
 （ubuntuの場合）
-python3 -m venv venv　
+python3 -m venv venv/n　
 source venv/bin/activate
  deactivate  # 仮想環境から抜ける
 
