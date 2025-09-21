@@ -6,7 +6,10 @@ venv環境に入るためのコマンド
 python -m venv venv
 source venv/bin/activate
 
-（ubuntuの場合）python3 -m venv venv　source venv/bin/activate
+（ubuntuの場合）
+python3 -m venv venv　
+source venv/bin/activate
+ deactivate  # 仮想環境から抜ける
 
 
 サイト閲覧時
