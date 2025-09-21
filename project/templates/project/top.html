@@ -1,0 +1,14 @@
+
+{% load static %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 80px;">
+    <h1>さあ、相続を始めよう</h1>
+    <p>相続・空き家に関する情報を簡単に管理・共有できるサービスです。</p>
+
+    <div style="margin-top: 40px;">
+        <a href="{% url 'project:login' %}" class="btn btn-primary" style="margin-right: 15px; padding: 12px 24px; font-size: 18px;">ログイン</a>
+        <a href="{% url 'project:register' %}" class="btn btn-success" style="padding: 12px 24px; font-size: 18px;">新規登録</a>
+    </div>
+</div>
+{% endblock %}

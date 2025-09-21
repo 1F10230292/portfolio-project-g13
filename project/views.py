@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.decorators import login_required
 
+def top(request):
+    return render(request, "project/top.html")
 
 def login_view(request):
     if request.method == 'POST':
