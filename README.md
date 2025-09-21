@@ -10,7 +10,7 @@ source venv/bin/activate
 
 （ubuntuの場合）
 
-python3 -m venv venv　
+python3 -m venv venv (仮想環境を作成するコマンド、2回目以降不要）　
 
 source venv/bin/activate
 
