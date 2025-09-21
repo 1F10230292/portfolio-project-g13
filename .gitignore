@@ -21,3 +21,7 @@ tests/screenshots/
 venv/
 __pycache__/
 *.pyc
+venv/
+source/pyvenv.cfg
+__pycache__/
+*.pyc
