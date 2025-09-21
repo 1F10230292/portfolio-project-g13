@@ -2,7 +2,7 @@
 チーム開発
 
 
-venv環境に入るためのコマンド
+<venv環境に入るためのコマンド>
 
 python -m venv venv
 
@@ -17,10 +17,11 @@ source venv/bin/activate
 deactivate  # 仮想環境から抜ける
 
 
-サイト閲覧時
+<サイト閲覧時>
 
 python manage.py runserver
 
+<作業>
 
 コード変更する前に必ず
 
