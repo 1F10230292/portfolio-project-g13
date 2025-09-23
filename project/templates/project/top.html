@@ -1,14 +1,30 @@
-
 {% load static %}
 
-{% block content %}
-<div style="text-align: center; margin-top: 80px;">
-    <h1>さあ、相続を始めよう</h1>
-    <p>相続・空き家に関する情報を簡単に管理・共有できるサービスです。</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さあ、相続を始めよう</title>
+    <link rel="stylesheet" href="{% static 'project/css/top.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="{% static 'project/js/top.js' %}" defer></script>
+</head>
+<body>
 
-    <div style="margin-top: 40px;">
-        <a href="{% url 'project:login' %}" class="btn btn-primary" style="margin-right: 15px; padding: 12px 24px; font-size: 18px;">ログイン</a>
-        <a href="{% url 'project:register' %}" class="btn btn-success" style="padding: 12px 24px; font-size: 18px;">新規登録</a>
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">さあ、相続を始めよう</h1>
+            <p class="hero-subtitle">相続・空き家に関する情報を簡単に管理・共有できるサービスです。</p>
+
+            <div class="hero-actions">
+                <a href="{% url 'project:register' %}" class="btn btn-primary">今すぐ無料で始める</a>
+                <a href="{% url 'project:login' %}" class="btn btn-secondary">ログイン</a>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock %}
+
+</body>
+</html>

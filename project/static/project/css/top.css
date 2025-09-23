@@ -1,0 +1,74 @@
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* 画面の高さを基準に最小の高さを確保 */
+    padding: 40px 20px;
+    background-color: #f0f4f8; /* 落ち着いた背景色 */
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+/* メインタイトル */
+.hero-title {
+    font-size: 3rem; /* 約48px */
+    font-weight: 700;
+    color: #1a253c; /* 信頼感のある濃い紺色 */
+    margin-bottom: 0.5em; /* 単位をemにすると文字サイズに連動して便利 */
+}
+
+/* 説明文 */
+.hero-subtitle {
+    font-size: 1.125rem; /* 約18px */
+    color: #5a677d; /* タイトルより少し柔らかい色 */
+    margin-bottom: 2.5em;
+    line-height: 1.8; /* 行間を少し広げて読みやすく */
+}
+
+/* ボタンの配置エリア */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ボタンとボタンの間の隙間 */
+    flex-wrap: wrap; /* スマホなどで画面が狭い時にボタンを縦に並べる */
+}
+
+/* --- ボタンの共通デザイン --- */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-size: 1rem; /* 約16px */
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid transparent; /* 枠線用のスペースを確保 */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* プライマリボタン (新規登録) */
+.btn-primary {
+    background-color: #007bff; /* 目を引く青 */
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px); /* マウスを乗せると少し浮き上がる */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* セカンダリボタン (ログイン) */
+.btn-secondary {
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff; /* 枠線ボタン */
+}
+
+.btn-secondary:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
