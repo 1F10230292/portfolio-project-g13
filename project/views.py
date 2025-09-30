@@ -4,6 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.decorators import login_required
+from .models import Inheritance
+import random
+import string
+from django.shortcuts import render, redirect, get_object_or_404
+
 
 def top(request):
     return render(request, "project/top.html")
@@ -41,20 +46,80 @@ def register(request):
 
 
 class InheritanceForm(forms.Form):
-    deceased_name = forms.CharField(label="被相続人の氏名", max_length=100)
-    estate_value = forms.DecimalField(label="遺産総額（万円）", max_digits=12, decimal_places=2)
-    heirs = forms.CharField(label="相続人情報（例：長男〇〇、長女〇〇）", widget=forms.Textarea)
+    deceased_name = forms.CharField(
+        label="被相続人の氏名",
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            "placeholder": "例：山田太郎"
+        })
+    )
+    estate_value = forms.DecimalField(
+        label="遺産総額（万円）",
+        max_digits=12,
+        decimal_places=2,
+        widget=forms.TextInput(attrs={
+            "placeholder": "例：5000"
+        })
+    )
+    heirs = forms.CharField(
+        label="相続人情報",
+        widget=forms.Textarea(attrs={
+            "placeholder": "例：長男 山田一郎、長女 山田花子",
+            "rows": 3
+        })
+    )
+    has_house = forms.ChoiceField(
+        label="不動産（家）の有無",
+        choices=[("yes", "あり"), ("no", "なし")],
+        widget=forms.RadioSelect
+    )
 
+def generate_transfer_password():
+    """8桁のランダム英数字パスワードを生成"""
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
 @login_required
 def inheritance_input(request):
     if request.method == 'POST':
         form = InheritanceForm(request.POST)
         if form.is_valid():
-            # TODO: DB保存など
-            messages.success(request, "相続情報を登録しました。")
-            return redirect('project:inheritance_input')
+            transfer_password = generate_transfer_password()
+            inheritance = Inheritance.objects.create(
+                deceased_name=form.cleaned_data['deceased_name'],
+                estate_value=form.cleaned_data['estate_value'],
+                heirs=form.cleaned_data['heirs'],
+                has_house=(form.cleaned_data['has_house'] == "yes"),
+                transfer_password=transfer_password
+            )
+            return redirect('project:transfer_password', pk=inheritance.pk)
     else:
         form = InheritanceForm()
-
     return render(request, 'project/inheritance_input.html', {'form': form})
+
+
+@login_required
+def transfer_password_view(request, pk):
+    inheritance = Inheritance.objects.get(pk=pk)
+    return render(request, 'project/transfer_password.html', {
+        'transfer_password': inheritance.transfer_password,
+        'deceased_name': inheritance.deceased_name
+    })
+
+def heir_login(request):
+    """被相続人用ログインページ"""
+    if request.method == 'POST':
+        password = request.POST.get('transfer_password')
+
+        try:
+            inheritance = Inheritance.objects.get(transfer_password=password)
+            # ログイン成功 → 遺産情報表示ページへ
+            return render(request, 'project/heir_dashboard.html', {
+                'inheritance': inheritance
+            })
+        except Inheritance.DoesNotExist:
+            # パスワード不一致
+            return render(request, 'project/heir_login.html', {
+                'error': "パスワードが間違っています。"
+            })
+
+    return render(request, 'project/heir_login.html')

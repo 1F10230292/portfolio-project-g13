@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>被相続人ログイン</title>
+    <link rel="stylesheet" href="{% static 'project/css/heir_login.css' %}">
+</head>
+<body>
+    <div class="login-card">
+        <h1>被相続人ログイン</h1>
+        <p>発行された8桁のパスワードを入力してください。</p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="transfer_password" placeholder="パスワードを入力" required>
+            <button type="submit">ログイン</button>
+        </form>
+    </div>
+</body>
+</html>
