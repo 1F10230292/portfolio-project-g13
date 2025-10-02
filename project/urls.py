@@ -10,5 +10,6 @@ urlpatterns = [
     path("inheritance/", views.inheritance_input, name="inheritance_input"),  # 相続情報の入力
     path('transfer/<int:pk>/', views.transfer_password_view, name='transfer_password'),
     path('heir/login/', views.heir_login, name='heir_login'),
-
+    path("house/<int:pk>/", views.house_detail, name="house_detail"),
+    path("house/<int:pk>/edit/", views.house_detail_input, name="house_detail_input"),
 ]

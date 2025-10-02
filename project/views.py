@@ -8,6 +8,7 @@ from .models import Inheritance
 import random
 import string
 from django.shortcuts import render, redirect, get_object_or_404
+from .forms import HouseDetailForm
 
 
 def top(request):
@@ -23,12 +24,19 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"{username} さん、ログインしました。")
-            return redirect('project:inheritance_input')  # ← ここ変更
+
+            # すでに資産が登録されているか確認
+            if Inheritance.objects.filter(user=user).exists():
+                # 直近のInheritanceを取得してパスワード発行ページへ
+                inheritance = Inheritance.objects.filter(user=user).latest('id')
+                return redirect('project:transfer_password', pk=inheritance.pk)
+            else:
+                # 未登録なら入力ページへ
+                return redirect('project:inheritance_input')
         else:
             messages.error(request, "ユーザー名またはパスワードが間違っています。")
     
     return render(request, 'project/login.html')
-
 
 def register(request):
     if request.method == 'POST':
@@ -85,6 +93,7 @@ def inheritance_input(request):
         if form.is_valid():
             transfer_password = generate_transfer_password()
             inheritance = Inheritance.objects.create(
+                user=request.user,
                 deceased_name=form.cleaned_data['deceased_name'],
                 estate_value=form.cleaned_data['estate_value'],
                 heirs=form.cleaned_data['heirs'],
@@ -123,3 +132,24 @@ def heir_login(request):
             })
 
     return render(request, 'project/heir_login.html')
+
+def house_detail(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_detail.html", {
+        "inheritance": inheritance
+    })
+
+@login_required
+def house_detail_input(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+
+    if request.method == "POST":
+        form = HouseDetailForm(request.POST, instance=inheritance)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "不動産情報を保存しました。")
+            return redirect("project:house_detail", pk=inheritance.pk)
+    else:
+        form = HouseDetailForm(instance=inheritance)
+
+    return render(request, "project/house_detail_input.html", {"form": form, "inheritance": inheritance})

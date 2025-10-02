@@ -2,13 +2,20 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>相続情報</title>
+    <title>相続情報ダッシュボード</title>
 </head>
 <body>
     <h1>相続情報</h1>
+
     <p><strong>被相続人:</strong> {{ inheritance.deceased_name }}</p>
     <p><strong>遺産総額:</strong> {{ inheritance.estate_value }} 万円</p>
     <p><strong>相続人情報:</strong> {{ inheritance.heirs }}</p>
     <p><strong>不動産の有無:</strong> {{ inheritance.has_house|yesno:"あり,なし" }}</p>
+
+    {% if inheritance.has_house %}
+        <p>
+            🏠 <a href="{% url 'project:house_detail' inheritance.pk %}">不動産の詳細を見る</a>
+        </p>
+    {% endif %}
 </body>
 </html>

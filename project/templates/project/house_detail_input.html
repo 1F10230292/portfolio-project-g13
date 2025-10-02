@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>不動産情報編集</title>
+</head>
+<body>
+    <h1>不動産情報編集</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">保存</button>
+    </form>
+
+    <p><a href="{% url 'project:house_detail' inheritance.pk %}">詳細に戻る</a></p>
+</body>
+</html>
