@@ -148,8 +148,18 @@ def house_detail_input(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "不動産情報を保存しました。")
-            return redirect("project:house_detail", pk=inheritance.pk)
+            # 保存後に提案フローへ誘導
+            return redirect("project:house_suggestion", pk=inheritance.pk)
     else:
         form = HouseDetailForm(instance=inheritance)
 
     return render(request, "project/house_detail_input.html", {"form": form, "inheritance": inheritance})
+
+@login_required
+def house_suggestion(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+
+    # シンプルに選択肢を表示（後で分岐アンケート化できる）
+    return render(request, "project/house_suggestion.html", {
+        "inheritance": inheritance
+    })

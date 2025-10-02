@@ -26,3 +26,8 @@ class Inheritance(models.Model):
     # 新規追加
     house_address = models.CharField("不動産住所", max_length=255, blank=True, null=True)
     house_built_year = models.PositiveIntegerField("築年数", blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    built_year = models.IntegerField(blank=True, null=True)
+    size = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    
+    transfer_password = models.CharField(max_length=8)

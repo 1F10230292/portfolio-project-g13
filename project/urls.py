@@ -12,4 +12,6 @@ urlpatterns = [
     path('heir/login/', views.heir_login, name='heir_login'),
     path("house/<int:pk>/", views.house_detail, name="house_detail"),
     path("house/<int:pk>/edit/", views.house_detail_input, name="house_detail_input"),
+    path("house/<int:pk>/suggestion/", views.house_suggestion, name="house_suggestion"),
+
 ]

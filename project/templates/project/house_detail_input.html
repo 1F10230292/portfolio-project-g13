@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>不動産情報編集</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, textarea, select { width: 300px; padding: 5px; margin-top: 5px; }
+        button { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
+    </style>
 </head>
 <body>
     <h1>不動産情報編集</h1>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        
+        {{ form.non_field_errors }}
+
+        <label for="id_address">住所</label>
+        {{ form.address.errors }}
+        {{ form.address }}
+
+        <label for="id_built_year">築年数</label>
+        {{ form.built_year.errors }}
+        {{ form.built_year }}
+
+        <label for="id_size">建物面積（㎡）</label>
+        {{ form.size.errors }}
+        {{ form.size }}
+
+        <label for="id_has_house">不動産の有無</label>
+        {{ form.has_house.errors }}
+        {{ form.has_house }}
+
         <button type="submit">保存</button>
     </form>
 
-    <p><a href="{% url 'project:house_detail' inheritance.pk %}">詳細に戻る</a></p>
+    <p><a href="{% url 'project:house_detail' inheritance.pk %}">詳細ページに戻る</a></p>
 </body>
 </html>
