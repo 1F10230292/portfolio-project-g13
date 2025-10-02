@@ -10,11 +10,11 @@
     <p>{{ inheritance.deceased_name }} さんの不動産について、今後の方針を選択してください。</p>
 
     <ul>
-        <li><a href="#">売却を検討する</a></li>
-        <li><a href="#">賃貸・シェアハウスに活用する</a></li>
-        <li><a href="#">リフォームして活用する</a></li>
-        <li><a href="#">一時的に保有する</a></li>
-    </ul>
+    <li><a href="{% url 'project:house_sell' inheritance.pk %}">売却を検討する</a></li>
+    <li><a href="{% url 'project:house_rent' inheritance.pk %}">賃貸・シェアハウスに活用する</a></li>
+    <li><a href="{% url 'project:house_reform' inheritance.pk %}">リフォームして活用する</a></li>
+    <li><a href="{% url 'project:house_hold' inheritance.pk %}">一時的に保有する</a></li>
+</ul>
 
     <p><a href="{% url 'project:house_detail' inheritance.pk %}">不動産情報詳細に戻る</a></p>
 </body>

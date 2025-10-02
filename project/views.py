@@ -163,3 +163,23 @@ def house_suggestion(request, pk):
     return render(request, "project/house_suggestion.html", {
         "inheritance": inheritance
     })
+
+@login_required
+def house_sell(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_sell.html", {"inheritance": inheritance})
+
+@login_required
+def house_rent(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_rent.html", {"inheritance": inheritance})
+
+@login_required
+def house_reform(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_reform.html", {"inheritance": inheritance})
+
+@login_required
+def house_hold(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_hold.html", {"inheritance": inheritance})

@@ -13,5 +13,9 @@ urlpatterns = [
     path("house/<int:pk>/", views.house_detail, name="house_detail"),
     path("house/<int:pk>/edit/", views.house_detail_input, name="house_detail_input"),
     path("house/<int:pk>/suggestion/", views.house_suggestion, name="house_suggestion"),
+    path("house/<int:pk>/sell/", views.house_sell, name="house_sell"),
+path("house/<int:pk>/rent/", views.house_rent, name="house_rent"),
+path("house/<int:pk>/reform/", views.house_reform, name="house_reform"),
+path("house/<int:pk>/hold/", views.house_hold, name="house_hold"),
 
 ]
