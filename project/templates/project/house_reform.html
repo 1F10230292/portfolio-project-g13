@@ -1,3 +1,19 @@
-<h1>リフォームのご提案</h1>
-<p>{{ inheritance.deceased_name }} さんの不動産について、売却を検討する場合の流れを案内します。</p>
-<p><a href="{% url 'project:house_suggestion' inheritance.pk %}">戻る</a></p>
+{% extends "base.html" %}
+{% block content %}
+<h2>リフォーム提案</h2>
+<p>築年数: {{ inheritance.house_built_year }}年</p>
+<p>広さ: {{ inheritance.size }}㎡</p>
+<p>概算リフォーム費用: <strong>{{ reform_cost }}万円</strong></p>
+<h3>おすすめリフォーム会社</h3>
+<ul>
+  {% for company in reform_companies %}
+    <li>{{ company.name }}（{{ company.phone }}）</li>
+  {% endfor %}
+</ul>
+<h3>必要な手続き・流れ</h3>
+<ol>
+  <li>現地調査・見積もり取得</li>
+  <li>契約・着工</li>
+  <li>完了検査・引き渡し</li>
+</ol>
+{% endblock %}

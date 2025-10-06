@@ -9,6 +9,8 @@ import random
 import string
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import HouseDetailForm
+from .forms import HouseSuggestionForm
+from django.urls import reverse
 
 
 def top(request):
@@ -159,8 +161,46 @@ def house_detail_input(request, pk):
 def house_suggestion(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk)
 
-    # シンプルに選択肢を表示（後で分岐アンケート化できる）
+    if request.method == "POST":
+        form = HouseSuggestionForm(request.POST)
+        if form.is_valid():
+            priority = form.cleaned_data['priority']
+            # 分岐ロジック
+            if priority == 'A':
+                step2a = form.cleaned_data['step2a']
+                if step2a == 'A-1':
+                    # 恒久的住居/賃貸 → リフォーム提案
+                    return redirect("project:house_reform", pk=pk)
+                elif step2a == 'A-2':
+                    # 時々利用 → 賃貸提案
+                    return redirect("project:house_rent", pk=pk)
+                elif step2a == 'A-3':
+                    # 維持管理提案
+                    return redirect("project:house_hold", pk=pk)
+            elif priority == 'B':
+                step2b = form.cleaned_data['step2b']
+                if step2b == 'B-1':
+                    # 売却（状態良好）
+                    return redirect("project:house_sell", pk=pk)
+                elif step2b == 'B-2':
+                    # 売却（要解体）
+                    return redirect("project:house_sell", pk=pk)
+                elif step2b == 'B-3':
+                    # 分割売却
+                    return redirect("project:house_sell", pk=pk)
+            elif priority == 'C':
+                step2c = form.cleaned_data['step2c']
+                if step2c == 'C-1':
+                    # 収益運用
+                    return redirect("project:house_rent", pk=pk)
+                elif step2c == 'C-2':
+                    # 管理コスト削減
+                    return redirect("project:house_hold", pk=pk)
+        # フォームエラー時も再表示
+    else:
+        form = HouseSuggestionForm()
     return render(request, "project/house_suggestion.html", {
+        "form": form,
         "inheritance": inheritance
     })
 
