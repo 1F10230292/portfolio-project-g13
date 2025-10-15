@@ -167,7 +167,6 @@ def house_suggestion(request, pk):
             if priority == 'A':
                 return redirect("project:house_sell", pk=pk)
             elif priority == 'B':
-                # ここをhouse_reformに変更
                 return redirect("project:house_reform", pk=pk)
             elif priority == 'C':
                 return redirect("project:house_rent", pk=pk)
@@ -191,4 +190,3 @@ def house_rent(request, pk):
 def house_reform(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk)
     return render(request, "project/house_reform.html", {"inheritance": inheritance})
-
