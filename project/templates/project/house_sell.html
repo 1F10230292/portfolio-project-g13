@@ -1,3 +1,42 @@
-<h1>売却のご提案</h1>
-<p>{{ inheritance.deceased_name }} さんの不動産について、売却を検討する場合の流れを案内します。</p>
-<p><a href="{% url 'project:house_suggestion' inheritance.pk %}">戻る</a></p>
+{% extends "base.html" %}
+{% block content %}
+<h2>継承・利用を選択した場合の運用提案（Aを選んだ方へ）</h2>
+
+<p>物件の利用頻度に応じて、以下のような運用提案があります。ご自身の状況に近いものをご覧ください。</p>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>2A. 恒久的に住む / 賃貸に出す</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>リフォームやリノベーションを検討し、物件価値や快適性を向上させましょう。</li>
+      <li>必要に応じて、専門業者による費用シミュレーションや見積もり取得が可能です。</li>
+      <li>賃貸に出す場合は、家賃相場や収益予測も確認しましょう。</li>
+    </ul>
+    <a href="{% url 'project:house_reform' inheritance.pk %}" class="btn btn-outline-primary">リフォーム・収益シミュレーションへ</a>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>2B. 時々利用する（別荘、親族の集まりなど）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>利用しない期間は、短期レンタル（民泊・シェアハウス）として活用することで収益化が可能です。</li>
+      <li>地域のニーズや法規制も確認しましょう。</li>
+    </ul>
+    <a href="{% url 'project:house_rent' inheritance.pk %}" class="btn btn-outline-primary">短期レンタル提案を見る</a>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>2C. 今は利用しないが、将来残したい</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>特定空き家に指定されないための最低限の維持管理（定期的な清掃・換気・草刈り等）を行いましょう。</li>
+      <li>管理サービスや地域の支援制度を活用することもおすすめです。</li>
+    </ul>
+    <a href="{% url 'project:house_hold' inheritance.pk %}" class="btn btn-outline-primary">維持管理のアドバイスを見る</a>
+  </div>
+</div>
+
+<p class="mt-4">ご希望や状況に応じて、上記の運用提案を選択してください。</p>
+{% endblock %}

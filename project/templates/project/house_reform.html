@@ -1,19 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>リフォーム提案</h2>
-<p>築年数: {{ inheritance.house_built_year }}年</p>
-<p>広さ: {{ inheritance.size }}㎡</p>
-<p>概算リフォーム費用: <strong>{{ reform_cost }}万円</strong></p>
-<h3>おすすめリフォーム会社</h3>
-<ul>
-  {% for company in reform_companies %}
-    <li>{{ company.name }}（{{ company.phone }}）</li>
-  {% endfor %}
-</ul>
-<h3>必要な手続き・流れ</h3>
-<ol>
-  <li>現地調査・見積もり取得</li>
-  <li>契約・着工</li>
-  <li>完了検査・引き渡し</li>
-</ol>
+<h2>売却・処分を選択した場合のご提案（建物の状態に応じて）</h2>
+
+<p>以下からご自身の物件状況に近いものをお選びください。</p>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>B-1. 築浅/状態良好（リフォームで売れる可能性大）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>買取再販業者や、建物付きでの仲介売却をおすすめします。</li>
+      <li>リフォームの必要があれば、簡易的な改修で売却額がアップすることもあります。</li>
+      <li>複数業者の査定を比較して、最適な売却方法を検討しましょう。</li>
+    </ul>
+    <a href="#" class="btn btn-outline-primary disabled">買取再販業者の紹介（準備中）</a>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>B-2. 築古/状態不良（倒壊リスクあり、または解体前提）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>解体業者を紹介し、複数社の見積もりを取得しましょう。</li>
+      <li>解体後は更地として土地を売却するのが一般的です。</li>
+      <li>自治体の助成制度がある場合も多いため、確認をおすすめします。</li>
+    </ul>
+    <a href="#" class="btn btn-outline-primary disabled">解体業者の見積もりを依頼（準備中）</a>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>B-3. 土地の面積が広い（郊外の大規模な土地など）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li><strong>分譲（分割売却）</strong>による収益最大化をご提案します。</li>
+      <li>不動産コンサルタントに相談し、分筆や宅地分譲など専門的なプランを検討しましょう。</li>
+      <li>地域の不動産市況も考慮した売却戦略が重要です。</li>
+    </ul>
+    <a href="#" class="btn btn-outline-primary disabled">不動産コンサルタントに相談（準備中）</a>
+  </div>
+</div>
+
+<p class="mt-4">状況に応じて、最適な売却方法をご検討ください。</p>
 {% endblock %}

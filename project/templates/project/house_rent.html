@@ -1,3 +1,32 @@
-<h1>賃貸のご提案</h1>
-<p>{{ inheritance.deceased_name }} さんの不動産について、売却を検討する場合の流れを案内します。</p>
-<p><a href="{% url 'project:house_suggestion' inheritance.pk %}">戻る</a></p>
+{% extends "base.html" %}
+{% block content %}
+<h2>一時的な運用を選択した場合のご提案（Cを選んだ方へ）</h2>
+
+<p>物件の活用目的に応じて、以下のような運用提案があります。ご自身の希望に近いものをお選びください。</p>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>C-1. 収益を得たい（売却まで時間がある場合）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>トランクルームや倉庫として貸し出し、安定収益を得る。</li>
+      <li>短期賃貸（定期借家契約）として活用し、柔軟な運用を行う。</li>
+      <li>地域活動スペースとして貸し出し、地域貢献と収益化の両立を目指す。</li>
+    </ul>
+    <a href="#" class="btn btn-outline-primary disabled">収益運用の詳細を見る（準備中）</a>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header"><strong>C-2. 管理コストを下げたい（収益は求めない）</strong></div>
+  <div class="card-body">
+    <ul>
+      <li>空き家バンクへの登録による維持管理の効率化。</li>
+      <li>地域の子育て世帯などへの無償または低額提供で地域貢献。</li>
+      <li>固定資産税の軽減を目的とした活用（利用実績づくり）。</li>
+    </ul>
+    <a href="#" class="btn btn-outline-primary disabled">空き家バンク登録の案内を見る（準備中）</a>
+  </div>
+</div>
+
+<p class="mt-4">ご希望や状況に応じて、上記の運用提案をご検討ください。</p>
+{% endblock %}

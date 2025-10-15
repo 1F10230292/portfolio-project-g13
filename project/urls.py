@@ -16,6 +16,4 @@ urlpatterns = [
     path("house/<int:pk>/sell/", views.house_sell, name="house_sell"),
 path("house/<int:pk>/rent/", views.house_rent, name="house_rent"),
 path("house/<int:pk>/reform/", views.house_reform, name="house_reform"),
-path("house/<int:pk>/hold/", views.house_hold, name="house_hold"),
-
 ]
