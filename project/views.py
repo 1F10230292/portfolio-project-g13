@@ -190,3 +190,8 @@ def house_rent(request, pk):
 def house_reform(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk)
     return render(request, "project/house_reform.html", {"inheritance": inheritance})
+
+@login_required
+def house_hold(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, "project/house_hold.html", {"inheritance": inheritance})
