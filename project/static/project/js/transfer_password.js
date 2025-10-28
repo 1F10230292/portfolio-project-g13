@@ -1,19 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const copyBtn = document.getElementById("copyBtn");
-  const printBtn = document.getElementById("printBtn");
-  const passwordElem = document.getElementById("transferPassword");
+document.addEventListener('DOMContentLoaded', () => {
+    const copyBtn = document.getElementById('copyBtn');
+    const transferPassword = document.getElementById('transferPassword');
 
-  if (copyBtn && passwordElem) {
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(passwordElem.textContent)
-        .then(() => alert("パスワードをコピーしました"))
-        .catch(() => alert("コピーに失敗しました"));
+    copyBtn.addEventListener('click', () => {
+        if (transferPassword) {
+            // パスワードをコピー
+            navigator.clipboard.writeText(transferPassword.textContent)
+                .then(() => {
+                    alert('パスワードをコピーしました');
+                })
+                .catch(err => {
+                    alert('コピーに失敗しました: ' + err);
+                });
+        }
     });
-  }
-
-  if (printBtn) {
-    printBtn.addEventListener("click", () => {
-      window.print();
-    });
-  }
 });

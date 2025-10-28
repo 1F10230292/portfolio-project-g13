@@ -1,29 +1,68 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>相続情報入力</title>
-    <link rel="stylesheet" href="{% static 'css/inheritance.css' %}">
-    <script src="{% static 'js/inheritance.js' %}" defer></script>
-</head>
-<body>
-    <h1>相続情報の入力</h1>
+<form method="post">
+    {% csrf_token %}
 
-    {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-    </div>
-    {% endif %}
+    <fieldset>
+        <legend>被相続人情報</legend>
+        <p>
+            {{ form.deceased_name.label_tag }}<span style="color:red">*</span><br>
+            {{ form.deceased_name }}
+        </p>
+        <p>
+            {{ form.deceased_name_kana.label_tag }}<span style="color:red">*</span><br>
+            {{ form.deceased_name_kana }}
+        </p>
+        <p>
+            {{ form.deceased_birth_date.label_tag }}<span style="color:red">*</span><br>
+            {{ form.deceased_birth_date }}
+        </p>
+        <p>
+            {{ form.postal_code.label_tag }}<span style="color:red">*</span><br>
+            {{ form.postal_code }}
+        </p>
+        <p>
+            {{ form.address.label_tag }}<span style="color:red">*</span><br>
+            {{ form.address }}
+        </p>
+        <p>
+            {{ form.occupation.label_tag }}<span style="color:red">*</span><br>
+            {{ form.occupation }}
+        </p>
+    </fieldset>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">登録</button>
-    </form>
+    <fieldset>
+        <legend>遺産手続き情報</legend>
+        <p>
+            {{ form.inheritance_settlement_date.label_tag }}<span style="color:red">*</span><br>
+            {{ form.inheritance_settlement_date }}
+        </p>
+        <p>
+            {{ form.tax_office.label_tag }}<span style="color:red">*</span><br>
+            {{ form.tax_office }}
+        </p>
+    </fieldset>
 
-    <p><a href="{% url 'project:login' %}">ログアウト（または再ログイン）</a></p>
-</body>
-</html>
+    <fieldset>
+        <legend>不動産情報</legend>
+        <p>{{ form.has_house.label_tag }}<br>{{ form.has_house }}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>相続人情報</legend>
+        <p>{{ form.heirs.label_tag }}<br>{{ form.heirs }}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>財産情報（円単位）</legend>
+        <p>{{ form.cash_deposit.label_tag }}<br>{{ form.cash_deposit }}</p>
+        <p>{{ form.securities.label_tag }}<br>{{ form.securities }}</p>
+        <p>{{ form.household_goods.label_tag }}<br>{{ form.household_goods }}</p>
+        <p>{{ form.others.label_tag }}<br>{{ form.others }}</p>
+        <p>{{ form.life_insurance.label_tag }}<br>{{ form.life_insurance }}</p>
+        <p>{{ form.business_assets.label_tag }}<br>{{ form.business_assets }}</p>
+        <p>{{ form.foreign_assets.label_tag }}<br>{{ form.foreign_assets }}</p>
+        <p>{{ form.funeral_cost.label_tag }}<br>{{ form.funeral_cost }}</p>
+        <p>{{ form.debt.label_tag }}<br>{{ form.debt }}</p>
+    </fieldset>
+
+    <button type="submit">登録してパスワード発行</button>
+</form>
