@@ -12,7 +12,7 @@
       <li>短期賃貸（定期借家契約）として活用し、柔軟な運用を行う。</li>
       <li>地域活動スペースとして貸し出し、地域貢献と収益化の両立を目指す。</li>
     </ul>
-    <a href="#" class="btn btn-outline-primary disabled">収益運用の詳細を見る（準備中）</a>
+    <a href="{% url 'project:house_operation_compare' inheritance.pk %}" class="btn btn-primary me-2">収益運用の詳細</a>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
       <li>地域の子育て世帯などへの無償または低額提供で地域貢献。</li>
       <li>固定資産税の軽減を目的とした活用（利用実績づくり）。</li>
     </ul>
-    <a href="#" class="btn btn-outline-primary disabled">空き家バンク登録の案内を見る（準備中）</a>
+    <a href="{% url 'project:house_support' inheritance.pk %}" class="btn btn-outline-success">空き家バンク案内を見る</a>
   </div>
 </div>
 

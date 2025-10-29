@@ -17,4 +17,6 @@ urlpatterns = [
     path("house/<int:pk>/rent/", views.house_rent, name="house_rent"),
     path("house/<int:pk>/reform/", views.house_reform, name="house_reform"),
     path("house/<int:pk>/hold/", views.house_hold, name="house_hold"),
+    path('house/<int:pk>/operation/compare/', views.house_operation_compare, name='house_operation_compare'),
+    path('house/<int:pk>/support/', views.house_support, name='house_support'),
 ]

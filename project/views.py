@@ -161,3 +161,13 @@ def house_hold(request, pk):
 def house_detail(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk)
     return render(request, "project/house_detail.html", {"inheritance": inheritance})
+
+@login_required
+def house_operation_compare(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/house_operation_compare.html", {"inheritance": inheritance})
+
+@login_required
+def house_support(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/house_support.html", {"inheritance": inheritance})
