@@ -2,41 +2,39 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>不動産情報編集</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { font-weight: bold; display: block; margin-top: 10px; }
-        input, textarea, select { width: 300px; padding: 5px; margin-top: 5px; }
-        button { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
-    </style>
+    <title>不動産情報の入力</title>
 </head>
 <body>
-    <h1>不動産情報編集</h1>
+    <h1>不動産情報の入力</h1>
 
     <form method="post">
         {% csrf_token %}
-        
-        {{ form.non_field_errors }}
 
-        <label for="id_address">住所</label>
-        {{ form.address.errors }}
-        {{ form.address }}
+        <div>
+            <label for="{{ form.has_house.id_for_label }}">不動産（家）の有無:</label>
+            {{ form.has_house }}
+        </div>
 
-        <label for="id_built_year">築年数</label>
-        {{ form.built_year.errors }}
-        {{ form.built_year }}
+        <div>
+            <label for="{{ form.house_address.id_for_label }}">不動産住所:</label>
+            {{ form.house_address }}
+        </div>
 
-        <label for="id_size">建物面積（㎡）</label>
-        {{ form.size.errors }}
-        {{ form.size }}
+        <div>
+            <label for="{{ form.house_built_year.id_for_label }}">築年数(年):</label>
+            {{ form.house_built_year }}
+        </div>
 
-        <label for="id_has_house">不動産の有無</label>
-        {{ form.has_house.errors }}
-        {{ form.has_house }}
+        <div>
+            <label for="{{ form.house_size.id_for_label }}">土地/建物の面積(㎡):</label>
+            {{ form.house_size }}
+        </div>
 
         <button type="submit">保存</button>
     </form>
 
-    <p><a href="{% url 'project:house_detail' inheritance.pk %}">詳細ページに戻る</a></p>
+    <p>
+        <a href="{% url 'project:inheritance_input' %}">相続情報に戻る</a>
+    </p>
 </body>
 </html>
