@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-1 収益運用の詳細</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Interフォントの読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Noto Sans JP', 'Inter', sans-serif; }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 md:p-8">
+
+    <div class="bg-white w-full max-w-3xl p-6 sm:p-10 rounded-2xl shadow-xl">
+        
+        <!-- ヘッダー -->
+        <div class="mb-6">
+            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-3">
+                提案 (C-1)
+            </span>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
+                収益化プラン詳細
+            </h1>
+            <p class="text-gray-600 mt-2">
+                空き家を収益源に変えるための具体的な活用法です。
+            </p>
+        </div>
+
+        <!-- コンテンツ -->
+        <div class="space-y-6">
+            <ul class="list-none space-y-5 text-gray-800">
+                <li>
+                    <span class="font-semibold text-lg block text-blue-800">トランクルーム/物置としての貸出</span>
+                    <p class="text-sm text-gray-600 my-2">比較的低い初期投資で始められます。荷物置きのニーズは都市部・郊外問わず存在します。家財が残っている場合でも、一部屋から貸し出せるサービスもあります。</p>
+                    <span class="text-sm font-semibold text-gray-700">参考サービス:</span>
+                    <a href="https://monooq.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:underline ml-2">モノオク</a>
+                    <a href="https://www.spacemarket.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:underline ml-2">スペースマーケット (倉庫利用)</a>
+                </li>
+                <li>
+                    <span class="font-semibold text-lg block text-blue-800">短期賃貸（定期借家）</span>
+                    <p class="text-sm text-gray-600 my-2">売却時期が決まっている場合でも、「契約期間の満了によって契約が終了する」定期借家契約を活用すれば、期間を区切って貸し出すことが可能です。リフォームや出張などの一時的な住まいの需要に応えます。</p>
+                    <span class="text-sm font-semibold text-gray-700">参考サービス:</span>
+                    <a href="https://www.airbnb.jp/" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:underline ml-2">Airbnb (民泊)</a>
+                    <span class="text-sm text-gray-600 ml-2">(※自治体の条例・法規制の確認が必須)</span>
+                    <p class="text-sm text-gray-600 mt-1">または、地元の不動産会社に「定期借家」として相談するのが最も堅実です。</p>
+                </li>
+                <li>
+                    <span class="font-semibold text-lg block text-blue-800">地域活動スペース (時間貸し)</span>
+                    <p class="text-sm text-gray-600 my-2">地域のサークル活動、小規模なイベント、テレワークスペース、撮影スタジオとして時間単位で貸し出します。立地や物件の特性（古民家など）が強みになることもあります。</p>
+                    <span class="text-sm font-semibold text-gray-700">参考サービス:</span>
+                    <a href="https://www.instabase.jp/" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:underline ml-2">インスタベース</a>
+                    <a href="https://www.spacemarket.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:underline ml-2">スペースマーケット</a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 戻るボタン -->
+        <div class="mt-10 text-center">
+            <!-- ★修正点: エラーを防ぐため、hrefを "javascript:history.back()" に変更 -->
+            <a href="javascript:history.back()" 
+               class="inline-block px-6 py-2 text-base font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                &larr; 選択肢に戻る
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
