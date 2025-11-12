@@ -191,3 +191,8 @@ def renovation_guide(request, pk):
 def reform_guide(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
     return render(request, "project/reform_guide.html", {"inheritance": inheritance})
+
+@login_required
+def private_lodging(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/private_lodging.html", {"inheritance": inheritance})

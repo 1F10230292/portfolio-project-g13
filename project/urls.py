@@ -23,4 +23,5 @@ urlpatterns = [
     path('house/<int:pk>/estimate/', views.estimate_house_price, name='estimate_house_price'),
     path('house/<int:pk>/renovation/', views.renovation_guide, name='renovation_guide'),
     path('house/<int:pk>/reform_guide/', views.reform_guide, name='reform_guide'),
+    path('house/<int:pk>/private_lodging/', views.private_lodging, name='private_lodging'),
 ]
