@@ -19,4 +19,8 @@ urlpatterns = [
     path("house/<int:pk>/hold/", views.house_hold, name="house_hold"),
     path('house/<int:pk>/operation/compare/', views.house_operation_compare, name='house_operation_compare'),
     path('house/<int:pk>/support/', views.house_support, name='house_support'),
+    path('house/<int:pk>/measures/', views.vacant_home_measures, name='vacant_home_measures'),
+    path('house/<int:pk>/estimate/', views.estimate_house_price, name='estimate_house_price'),
+    path('house/<int:pk>/renovation/', views.renovation_guide, name='renovation_guide'),
+    path('house/<int:pk>/reform_guide/', views.reform_guide, name='reform_guide'),
 ]
