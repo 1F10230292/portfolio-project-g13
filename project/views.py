@@ -196,3 +196,19 @@ def reform_guide(request, pk):
 def private_lodging(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
     return render(request, "project/private_lodging.html", {"inheritance": inheritance})
+
+@login_required
+def house_reform_b1(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/house_reform_b1.html", {"inheritance": inheritance})
+
+@login_required
+def house_reform_b2(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/house_reform_b2.html", {"inheritance": inheritance})
+
+@login_required
+def house_reform_b3(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/house_reform_b3.html", {"inheritance": inheritance})
+

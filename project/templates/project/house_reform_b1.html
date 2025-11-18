@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+    <!-- ヘッダー -->
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold text-primary">🏠 B-1 築浅 / 状態良好</h1>
+        <p class="lead">リフォームで売れる可能性大！あなたの土地の価値をチェックしてみませんか？</p>
+    </div>
+
+    <!-- サムネイル風のカード -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">あなたの土地、どのくらいの価値がある？</h3>
+                    <p class="card-text mb-4">
+                        状態の良い築浅物件は、リフォーム次第で相場以上で売れるチャンスがあります。
+                        <br>
+                        実際に相場より高く売れた事例もチェックしてみましょう！
+                    </p>
+                    <a href="https://ieul.jp/tochi/" target="_blank" class="btn btn-lg btn-primary">▶ 不動産査定サイトへ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ポイントリスト -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <ul class="list-group list-group-flush shadow-sm">
+                <li class="list-group-item"><strong>おすすめ方法：</strong>仲介売却または買取再販業者の利用</li>
+                <li class="list-group-item"><strong>ポイント：</strong>簡単なリフォームで価値アップの可能性</li>
+                <li class="list-group-item"><strong>重要：</strong>複数業者の査定を比較して最大の利益を狙おう</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 戻るボタン -->
+    <div class="text-center mt-4">
+        <a href="/sell/" class="btn btn-outline-secondary">← 戻る</a>
+    </div>
+</div>
+
+{% endblock %}
