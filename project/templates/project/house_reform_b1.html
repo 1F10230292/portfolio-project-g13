@@ -1,44 +1,79 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container py-5">
-    <!-- ヘッダー -->
-    <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold text-primary">🏠 B-1 築浅 / 状態良好</h1>
-        <p class="lead">リフォームで売れる可能性大！あなたの土地の価値をチェックしてみませんか？</p>
-    </div>
 
-    <!-- サムネイル風のカード -->
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
-            <div class="card shadow-sm border-0">
-                <div class="card-body text-center">
-                    <h3 class="card-title mb-3">あなたの土地、どのくらいの価値がある？</h3>
-                    <p class="card-text mb-4">
-                        状態の良い築浅物件は、リフォーム次第で相場以上で売れるチャンスがあります。
-                        <br>
-                        実際に相場より高く売れた事例もチェックしてみましょう！
-                    </p>
-                    <a href="https://ieul.jp/tochi/" target="_blank" class="btn btn-lg btn-primary">▶ 不動産査定サイトへ</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="b1-content">
+  <h2>🏠 B-1：築浅 / 状態良好</h2>
 
-    <!-- ポイントリスト -->
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <ul class="list-group list-group-flush shadow-sm">
-                <li class="list-group-item"><strong>おすすめ方法：</strong>仲介売却または買取再販業者の利用</li>
-                <li class="list-group-item"><strong>ポイント：</strong>簡単なリフォームで価値アップの可能性</li>
-                <li class="list-group-item"><strong>重要：</strong>複数業者の査定を比較して最大の利益を狙おう</li>
-            </ul>
-        </div>
-    </div>
+  <p>
+    築浅で状態の良い建物は、リフォーム次第で相場以上で売れるチャンスがあります。  
+    実際に「大きく価格が上がったケース」も多数あります。
+  </p>
 
-    <!-- 戻るボタン -->
-    <div class="text-center mt-4">
-        <a href="/sell/" class="btn btn-outline-secondary">← 戻る</a>
-    </div>
+  <h3>✨ 高く売れる3つの理由</h3>
+  <ul>
+    <li>
+      <strong>1. 建物価値がまだ残っている：</strong>
+      築浅物件は建物自体の価値が認められやすい。
+    </li>
+    <li>
+      <strong>2. リフォームで魅力アップ：</strong>
+      内装リフォーム1つで大幅に査定額が上がる可能性。
+    </li>
+    <li>
+      <strong>3. 購入層のターゲットが広い：</strong>
+      新築ほど高くないが状態が良い「ちょうどいい物件」を求める層が多いため。
+    </li>
+  </ul>
+
+  <p>
+    「あなたの家ならどれくらいで売れる？」  
+    複数査定で比較すると、より高い売却チャンスが生まれます。
+  </p>
+
+  <a href="https://ieul.jp/tochi/" class="btn btn-primary" target="_blank">
+    ▶ 不動産査定サイトを見る
+  </a>
 </div>
+
+<style>
+.b1-content {
+  background: #f0f8ff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  line-height: 1.6;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+.b1-content h2 {
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+.b1-content h3 {
+  color: #0056b3;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.b1-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.b1-content li {
+  margin-bottom: 12px;
+}
+.btn-primary {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+</style>
 
 {% endblock %}
