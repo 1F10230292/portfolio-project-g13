@@ -1,0 +1,65 @@
+/* 全体スタイル */
+body {
+    background-color: #f4f6f9;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* タイトル */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* カード風フォーム */
+.survey-card {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* form の中の p（Django の as_p 用） */
+.survey-card p {
+    margin-bottom: 18px;
+}
+
+/* ラベル */
+.survey-card label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* テキスト・入力関連 */
+.survey-card input[type="text"],
+.survey-card input[type="number"],
+.survey-card select,
+.survey-card textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* textarea */
+.survey-card textarea {
+    height: 90px;
+}
+
+/* ボタン */
+.survey-card button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+

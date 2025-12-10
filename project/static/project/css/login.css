@@ -1,46 +1,56 @@
-/* login.css - ログイン画面レイアウト調整版 */
+/* login.css - 青基調のログイン画面デザイン */
 
+/* ページ全体 */
 body {
     font-family: "Yu Gothic", "Segoe UI", sans-serif;
-    background-color: #f4f6f8;
+    background: #f0f4fa; /* ほのかな青背景 */
+    margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
+    align-items: center;
 }
 
-/* タイトル（上部固定） */
+/* タイトル */
 h1 {
     text-align: center;
-    margin: 2rem 0 1rem 0;
-    color: #2f3e46;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #1f56b3;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-/* メッセージ */
+/* メッセージ枠（Django messages用） */
 .messages {
-    max-width: 360px;
-    margin: 0 auto 1rem auto;
-    padding: 0.6rem 1rem;
-    border-left: 4px solid #f4a261;
-    background-color: #fff3e0;
-    color: #b35f2e;
-    border-radius: 6px;
+    max-width: 350px;
+    margin: 0 auto 1.5rem auto;
+    background: #e8f1ff;
+    padding: 0.7rem 1rem;
+    border-left: 4px solid #2e6fd8;
+    border-radius: 8px;
+    color: #1f4b8f;
     font-size: 0.9rem;
 }
 
-/* フォーム（画面中央配置） */
-form {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    width: 320px;
-    margin: auto; /* 真ん中に配置 */
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.messages p {
+    margin: 0.3rem 0;
 }
 
+/* フォーム本体 */
+form {
+    background: #ffffff;
+    padding: 2rem;
+    width: 340px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* ラベル */
 label {
     display: flex;
     flex-direction: column;
@@ -48,54 +58,58 @@ label {
     color: #333;
 }
 
+/* テキスト入力 */
 input {
-    padding: 0.6rem 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    padding: 0.7rem 0.8rem;
     font-size: 0.95rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid #b3c7e6;
+    border-radius: 6px;
+    transition: border-color .2s, box-shadow .2s;
 }
 
 input:focus {
     outline: none;
-    border-color: #5a8fd4;
-    box-shadow: 0 0 3px rgba(90,143,212,0.4);
-}
-
-/* エラー表示 */
-input.error {
-    border-color: #e63946;
+    border-color: #2e6fd8;
+    box-shadow: 0 0 4px rgba(46,111,216,0.4);
 }
 
 /* ボタン */
 button {
-    padding: 0.7rem;
+    padding: 0.75rem;
+    background-color: #2e6fd8;
     border: none;
     border-radius: 6px;
-    background-color: #5a8fd4;
-    color: white;
+    color: #fff;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color .2s;
 }
 
 button:hover {
-    background-color: #3e6fb2;
+    background-color: #1f56b3;
 }
 
-/* 下部リンク（画面下部に固定） */
+/* 下部リンク（新規登録案内） */
 p {
     text-align: center;
-    margin-top: auto; /* 下に押し下げる */
+    margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 0.9rem;
 }
 
 p a {
-    color: #5a8fd4;
+    color: #2e6fd8;
     text-decoration: none;
+    font-weight: 500;
 }
 
 p a:hover {
     text-decoration: underline;
 }
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+

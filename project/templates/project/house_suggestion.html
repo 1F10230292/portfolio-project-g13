@@ -1,9 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'project/css/house_suggestion.css' %}">
+
 <h2>空き家運用アンケート</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">提案を見る</button>
-</form>
+
+<div class="survey-card">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">提案を見る</button>
+    </form>
+</div>
+
 {% endblock %}

@@ -60,15 +60,3 @@
     transform: translateY(-3px); /* マウスを乗せると少し浮き上がる */
     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
-
-/* セカンダリボタン (ログイン) */
-.btn-secondary {
-    background-color: transparent;
-    color: #007bff;
-    border-color: #007bff; /* 枠線ボタン */
-}
-
-.btn-secondary:hover {
-    background-color: #007bff;
-    color: #ffffff;
-}

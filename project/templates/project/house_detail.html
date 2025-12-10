@@ -1,20 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>不動産の詳細</title>
+    <link rel="stylesheet" href="{% static 'project/css/house_detail.css' %}">
 </head>
 <body>
     <h1>不動産の詳細情報</h1>
-    <p>不動産あり: {{ inheritance.has_house|yesno:"はい,いいえ" }}</p>
 
-    {% if inheritance.has_house %}
-        <p>住所: {{ inheritance.house_address }}</p>
-        <p>築年数: {{ inheritance.house_built_year }} 年</p>
-        <p>
-    <a href="{% url 'project:house_detail_input' inheritance.pk %}">不動産情報を編集する</a>
-</p>
+    <div class="detail-card">
+        <table class="detail-table">
+            <tr>
+                <td class="label">不動産あり</td>
+                <td class="value">{{ inheritance.has_house|yesno:"はい,いいえ" }}</td>
+            </tr>
 
-    {% endif %}
+            {% if inheritance.has_house %}
+            <tr>
+                <td class="label">住所</td>
+                <td class="value">{{ inheritance.house_address }}</td>
+            </tr>
+            <tr>
+                <td class="label">築年数</td>
+                <td class="value">{{ inheritance.house_built_year }} 年</td>
+            </tr>
+            {% endif %}
+        </table>
+
+        {% if inheritance.has_house %}
+        <div class="edit-link">
+            <a href="{% url 'project:house_detail_input' inheritance.pk %}">不動産情報を編集する</a>
+        </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>

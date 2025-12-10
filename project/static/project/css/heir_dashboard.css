@@ -1,0 +1,56 @@
+/* 全体レイアウト */
+body {
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+/* タイトル */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* 情報カード */
+.dashboard-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* 各行の情報 */
+.dashboard-card p {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+/* ラベル（強調部分） */
+.dashboard-card strong {
+    color: #2c3e50;
+}
+
+/* 不動産リンク部分 */
+.dashboard-card a {
+    color: #2a7bd5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+/* 絵文字つきリンク */
+.house-link {
+    margin-top: 20px;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
