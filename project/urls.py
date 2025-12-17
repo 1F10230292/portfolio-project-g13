@@ -27,4 +27,6 @@ urlpatterns = [
     path("house/<int:pk>/house_reform_b1/", views.house_reform_b1, name="house_reform_b1"),
     path("house/<int:pk>/house_reform_b2/", views.house_reform_b2, name="house_reform_b2"),
     path("house/<int:pk>/house_reform_b3/", views.house_reform_b3, name="house_reform_b3"),
+    path("house/<int:pk>/summary/", views.inheritance_summary, name="inheritance_summary"),
+    path("house/<int:pk>/pdf/", views.inheritance_pdf, name="inheritance_pdf"),
 ]

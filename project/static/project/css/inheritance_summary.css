@@ -1,0 +1,28 @@
+.summary-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.summary-table th,
+.summary-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.summary-table th {
+  background: #f0f4fa;
+  text-align: left;
+}
+
+.summary-table .total td {
+  background: #e8f1ff;
+  font-size: 1.1rem;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 2rem;
+}

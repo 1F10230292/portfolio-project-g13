@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>財産目録</title>
+  <link rel="stylesheet" href="{% static 'project/css/pdf.css' %}">
+</head>
+<body>
+
+<h2>財産目録</h2>
+
+<table>
+  <tr><th colspan="2">被相続人情報</th></tr>
+  <tr><td>氏名</td><td>{{ inheritance.deceased_name }}</td></tr>
+  <tr><td>ふりがな</td><td>{{ inheritance.deceased_name_kana }}</td></tr>
+  <tr><td>生年月日</td><td>{{ inheritance.deceased_birth_date }}</td></tr>
+  <tr><td>住所</td><td>{{ inheritance.address }}</td></tr>
+
+  <tr><th colspan="2">財産情報（円）</th></tr>
+  <tr><td>現金・預貯金</td><td>{{ inheritance.cash_deposit }}</td></tr>
+  <tr><td>有価証券</td><td>{{ inheritance.securities }}</td></tr>
+  <tr><td>生命保険</td><td>{{ inheritance.life_insurance }}</td></tr>
+  <tr><td>債務</td><td>-{{ inheritance.debt }}</td></tr>
+
+  <tr class="total">
+    <td>遺産総額</td>
+    <td>{{ inheritance.estate_value }}</td>
+  </tr>
+</table>
+
+</body>
+</html>
