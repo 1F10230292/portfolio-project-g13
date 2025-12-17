@@ -3,12 +3,22 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>売買予想価格</title>
-</head>
-<body>
-<h1>hello</h1>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>売買予想価格</title>
+  </head>
+  <body>
+    <h1>秩父市空き家バンク売買予想価格</h1>
+    <!-- project/templates/project/estimate_house_price.html -->
+    <p>対象物件住所: {{ inheritance.house_address }}</p>
+    <p>築年数: {{ inheritance.house_built_year }} 年</p>
+    <p>面積: {{ inheritance.house_size }} ㎡</p>
+
+    {% if prediction %}
+    <h3>予想買取価格: {{ prediction|floatformat:0 }} 円</h3>
+    {% else %}
+    <p>予測できる情報が不足しています。</p>
+    {% endif %}
+  </body>
 </html>
 {% endblock %}
