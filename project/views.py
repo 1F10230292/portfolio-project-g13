@@ -7,11 +7,24 @@ from .models import Inheritance
 from .forms import InheritanceForm, HouseDetailForm, HouseSuggestionForm
 import random
 import string
+
+
+#新規事項
+import os
+import tensorflow as tf
+import numpy as np
+
+#AI model
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "ai_models", "my_model.h5")
+model = tf.keras.models.load_model(MODEL_PATH)
+
+
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.conf import settings
 import os
+
 
 def top(request):
     return render(request, "project/top.html")
@@ -185,7 +198,18 @@ def vacant_home_measures(request, pk):
 @login_required
 def estimate_house_price(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
-    return render(request, "project/estimate_house_price.html", {"inheritance": inheritance})
+    prediction =None
+    if inheritance.has_house:
+        # テストデータを取得
+        built_year =  inheritance.house_built_year or 0# 築年数
+        size = float(inheritance.house_size or 0)# 面積　㎡
+        
+        import datetime
+        current_year = datetime.date.today().year
+        age =current_year-built_year if built_year  else 0
+        input_data = np.array([[age,size]])
+        prediction= model.predict(input_data)[0][0]
+    return render(request, "project/estimate_house_price.html", {"inheritance": inheritance,"prediction":prediction})
 
 @login_required
 def renovation_guide(request, pk):
