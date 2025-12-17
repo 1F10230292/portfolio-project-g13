@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2>財産目録</h2>
+
+<table class="summary-table">
+  <tr><th colspan="2">被相続人情報</th></tr>
+  <tr><td>氏名</td><td>{{ inheritance.deceased_name }}</td></tr>
+  <tr><td>ふりがな</td><td>{{ inheritance.deceased_name_kana }}</td></tr>
+  <tr><td>生年月日</td><td>{{ inheritance.deceased_birth_date }}</td></tr>
+  <tr><td>住所</td><td>{{ inheritance.address }}</td></tr>
+
+  <tr><th colspan="2">財産情報（円）</th></tr>
+  <tr><td>現金・預貯金</td><td>{{ inheritance.cash_deposit }}</td></tr>
+  <tr><td>有価証券</td><td>{{ inheritance.securities }}</td></tr>
+  <tr><td>生命保険</td><td>{{ inheritance.life_insurance }}</td></tr>
+  <tr><td>債務</td><td>-{{ inheritance.debt }}</td></tr>
+
+  <tr class="total">
+    <td><strong>遺産総額</strong></td>
+    <td><strong>{{ inheritance.estate_value }}</strong></td>
+  </tr>
+</table>
+
+<div class="actions">
+  <a href="{% url 'project:inheritance_pdf' inheritance.pk %}"
+     class="btn btn-primary">
+    PDFをダウンロード
+  </a>
+</div>
+
+
+{% endblock %}

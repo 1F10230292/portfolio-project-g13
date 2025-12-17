@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'project/css/house_sell.css' %}">
 <h2>一時的な運用を選択した場合のご提案（Cを選んだ方へ）</h2>
 
 <p>物件の活用目的に応じて、以下のような運用提案があります。ご自身の希望に近いものをお選びください。</p>
@@ -12,10 +14,9 @@
       <li>短期賃貸（定期借家契約）として活用し、柔軟な運用を行う。</li>
       <li>地域活動スペースとして貸し出し、地域貢献と収益化の両立を目指す。</li>
     </ul>
-    <a href="{% url 'project:house_operation_compare' inheritance.pk %}" class="btn btn-primary me-2">収益運用の詳細</a>
+    <a href="{% url 'project:house_operation_compare' inheritance.pk %}"class="btn btn-outline-primary">収益運用の詳細</a>
   </div>
 </div>
-
 <div class="card mb-3">
   <div class="card-header"><strong>C-2. 管理コストを下げたい（収益は求めない）</strong></div>
   <div class="card-body">

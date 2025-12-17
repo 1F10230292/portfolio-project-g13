@@ -1,40 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>不動産情報の入力</title>
+    <link rel="stylesheet" href="{% static 'project/css/house_detail_input.css' %}">
 </head>
 <body>
     <h1>不動産情報の入力</h1>
 
-    <form method="post">
-        {% csrf_token %}
+    <div class="form-card">
+        <form method="post">
+            {% csrf_token %}
 
-        <div>
-            <label for="{{ form.has_house.id_for_label }}">不動産（家）の有無:</label>
-            {{ form.has_house }}
-        </div>
+            <div class="form-group">
+                <label for="{{ form.has_house.id_for_label }}">不動産（家）の有無:</label>
+                {{ form.has_house }}
+            </div>
 
-        <div>
-            <label for="{{ form.house_address.id_for_label }}">不動産住所:</label>
-            {{ form.house_address }}
-        </div>
+            <div class="form-group">
+                <label for="{{ form.house_address.id_for_label }}">不動産住所:</label>
+                {{ form.house_address }}
+            </div>
 
-        <div>
-            <label for="{{ form.house_built_year.id_for_label }}">築年数(年):</label>
-            {{ form.house_built_year }}
-        </div>
+            <div class="form-group">
+                <label for="{{ form.house_built_year.id_for_label }}">築年数(年):</label>
+                {{ form.house_built_year }}
+            </div>
 
-        <div>
-            <label for="{{ form.house_size.id_for_label }}">土地/建物の面積(㎡):</label>
-            {{ form.house_size }}
-        </div>
+            <div class="form-group">
+                <label for="{{ form.house_size.id_for_label }}">土地/建物の面積(㎡):</label>
+                {{ form.house_size }}
+            </div>
 
-        <button type="submit">保存</button>
-    </form>
+            <button type="submit">保存</button>
+        </form>
+    </div>
 
-    <p>
+    <div class="back-link">
         <a href="{% url 'project:inheritance_input' %}">相続情報に戻る</a>
-    </p>
+    </div>
 </body>
 </html>

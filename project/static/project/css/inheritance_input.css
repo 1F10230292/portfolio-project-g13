@@ -1,102 +1,99 @@
-/* inheritance_input.css */
+/* inheritance_input.css - 入力フォームデザイン（register.css と統一） */
 
-/* 全体のフォントと背景 */
 body {
-    font-family: "Helvetica", "Arial", sans-serif;
-    background-color: #f9f9f9;
-    margin: 20px;
+    font-family: "Yu Gothic", "Segoe UI", sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
-/* 見出し */
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-/* フォーム全体 */
+/* フォーム全体のカード */
 form {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 2rem 2.5rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 700px;
+    max-width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 }
 
-/* フィールドセット */
+/* セクション（fieldset） */
 fieldset {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+    border: 1px solid #d0d7df;
     border-radius: 8px;
-    background-color: #fafafa;
+    padding: 1.5rem 1.2rem;
+    background-color: #fafbfc;
 }
 
-/* フィールドセットのタイトル */
 legend {
     font-weight: bold;
-    color: #555;
-    padding: 0 10px;
+    padding: 0 0.4rem;
+    color: #2f3e46;
+    font-size: 1rem;
+}
+
+/* 各入力行 */
+p {
+    margin: 0.7rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 /* ラベル */
 label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
 }
 
 /* 入力欄 */
-input[type="text"],
-input[type="number"],
-input[type="date"],
-textarea {
-    width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 15px;
+input, select, textarea {
+    padding: 0.6rem 0.8rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* テキストエリアの高さ調整 */
 textarea {
-    resize: vertical;
+    min-height: 90px;
 }
 
-/* ラジオボタン */
-.radio-group {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 15px;
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #5a8fd4;
+    box-shadow: 0 0 3px rgba(90,143,212,0.4);
+}
+
+/* チェックボックス */
+input[type="checkbox"] {
+    width: auto;
+    transform: scale(1.2);
 }
 
 /* ボタン */
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 25px;
+    margin-top: 1rem;
+    padding: 0.8rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    background-color: #5a8fd4;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.2s;
 }
 
 button:hover {
-    background-color: #45a049;
-}
-
-/* メッセージ */
-.messages {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #ffefef;
-    color: #d8000c;
-    border: 1px solid #d8000c;
+    background-color: #3e6fb2;
 }

@@ -1,102 +1,141 @@
-/* register.css - 横幅広め版 */
+/* register.css - 青基調のユーザー登録画面 */
 
+/* ページ全体 */
 body {
     font-family: "Yu Gothic", "Segoe UI", sans-serif;
-    background-color: #f4f6f8;
+    background: #f0f4fa;
+    margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
 }
 
-/* タイトル（上部） */
+/* タイトル */
 h1 {
     text-align: center;
-    margin: 2rem 0 1rem 0;
-    color: #2f3e46;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #1f56b3;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-/* メッセージ */
+/* Django messages */
 .messages {
-    max-width: 480px;
-    margin: 0 auto 1rem auto;
-    padding: 0.6rem 1rem;
-    border-left: 4px solid #f4a261;
-    background-color: #fff3e0;
-    color: #b35f2e;
-    border-radius: 6px;
+    max-width: 380px;
+    margin: 0 auto 1.5rem auto;
+    background: #e8f1ff;
+    padding: 0.8rem 1rem;
+    border-left: 4px solid #2e6fd8;
+    border-radius: 8px;
+    color: #1f4b8f;
     font-size: 0.9rem;
 }
 
-/* フォーム（画面中央配置） */
-form {
-    background-color: #ffffff;
-    padding: 2rem;
+/* フォーム外枠 */
+.form-wrapper {
+    background: #ffffff;
+    padding: 2rem 2.2rem;
+    width: 380px;
+    margin: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    width: 480px; /* 横幅拡張 */
-    max-width: 90%; /* 小さい画面でもはみ出さない */
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 }
 
-label {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9rem;
+/* 各フィールドのブロック */
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+/* ラベル */
+.form-group label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
     color: #333;
+    margin-bottom: 0.4rem;
 }
 
-input, select {
-    padding: 0.6rem 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+/* テキスト入力 */
+.form-group input {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
     font-size: 0.95rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid #b3c7e6;
+    border-radius: 6px;
+    transition: border-color .2s, box-shadow .2s;
 }
 
-input:focus, select:focus {
+.form-group input:focus {
     outline: none;
-    border-color: #5a8fd4;
-    box-shadow: 0 0 3px rgba(90,143,212,0.4);
+    border-color: #2e6fd8;
+    box-shadow: 0 0 4px rgba(46,111,216,0.4);
 }
 
-/* エラー表示 */
-input.error, select.error {
-    border-color: #e63946;
+/* 説明文（help_text） */
+.helptext {
+    display: block;
+    color: #456;
+    font-size: 0.82rem;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+}
+
+/* 複数のパスワード条件（ul） */
+.form-group ul {
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.form-group ul li {
+    font-size: 0.82rem;
+    color: #456;
+    margin-bottom: 0.25rem;
+}
+
+/* Django エラー文 */
+.errorlist {
+    margin: 0.4rem 0 0.8rem 0;
+    padding: 0.7rem;
+    list-style: none;
+    background: #ffecec;
+    color: #b00000;
+    border-left: 4px solid #e63939;
+    border-radius: 6px;
+    font-size: 0.85rem;
 }
 
 /* ボタン */
 button {
-    padding: 0.7rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2e6fd8;
     border: none;
     border-radius: 6px;
-    background-color: #5a8fd4;
-    color: white;
+    color: #fff;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color .2s;
+    margin-top: 0.5rem;
 }
 
 button:hover {
-    background-color: #3e6fb2;
+    background-color: #1f56b3;
 }
 
-/* 下部リンク */
-p {
+/* 下部のログインリンク */
+.bottom-link {
     text-align: center;
-    margin-top: auto;
-    margin-bottom: 2rem;
+    margin-top: 1.8rem;
     font-size: 0.9rem;
 }
 
-p a {
-    color: #5a8fd4;
+.bottom-link a {
+    color: #2e6fd8;
     text-decoration: none;
+    font-weight: 500;
 }
 
-p a:hover {
+.bottom-link a:hover {
     text-decoration: underline;
 }

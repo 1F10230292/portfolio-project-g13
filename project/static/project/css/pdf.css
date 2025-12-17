@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "NotoSansJP";
+  src: url("../fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;   /* 可変フォントなので重要 */
+}
+
+body {
+  font-family: "NotoSansJP", sans-serif;
+  font-size: 12px;
+  color: #000;
+}

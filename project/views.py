@@ -8,6 +8,7 @@ from .forms import InheritanceForm, HouseDetailForm, HouseSuggestionForm
 import random
 import string
 
+
 #新規事項
 import os
 import tensorflow as tf
@@ -17,6 +18,12 @@ import numpy as np
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "ai_models", "my_model.h5")
 model = tf.keras.models.load_model(MODEL_PATH)
 
+
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from django.conf import settings
+import os
 
 
 def top(request):
@@ -83,6 +90,7 @@ def inheritance_input(request):
 def transfer_password_view(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk)
     return render(request, 'project/transfer_password.html', {
+        'inheritance': inheritance, 
         'transfer_password': inheritance.transfer_password,
         'deceased_name': inheritance.deceased_name
     })
@@ -233,3 +241,28 @@ def house_reform_b3(request, pk):
     inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
     return render(request, "project/house_reform_b3.html", {"inheritance": inheritance})
 
+@login_required
+def inheritance_summary(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+    return render(request, "project/inheritance_summary.html", {
+        "inheritance": inheritance
+    })
+
+
+@login_required
+def inheritance_pdf(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk, user=request.user)
+
+    html_string = render_to_string(
+        "project/inheritance_pdf.html",
+        {"inheritance": inheritance}
+    )
+
+    base_url = request.build_absolute_uri("/")  # ← 超重要
+
+    html = HTML(string=html_string, base_url=base_url)
+    pdf = html.write_pdf()
+
+    response = HttpResponse(pdf, content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="inheritance_summary.pdf"'
+    return response
