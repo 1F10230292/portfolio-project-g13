@@ -16,7 +16,7 @@ import numpy as np
 
 #AI model
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "ai_models", "my_model.h5")
-model = tf.keras.models.load_model(MODEL_PATH)
+#model = tf.keras.models.load_model(MODEL_PATH)
 
 
 from django.http import HttpResponse
