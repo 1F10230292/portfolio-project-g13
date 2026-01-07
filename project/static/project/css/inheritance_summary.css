@@ -1,28 +1,92 @@
+.summary-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .summary-table {
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
+  width: 800px;
+  max-width: 90%;
   border-collapse: collapse;
   background: #fff;
+  margin: 0 auto;
+}
+body {
+  background: #f5f7fb;
 }
 
+/* 表の外枠（カード風） */
+.summary-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.summary-table {
+  width: 800px;
+  max-width: 90%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 2px solid #333;
+}
+
+/* セル */
 .summary-table th,
 .summary-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #333;
+  padding: 10px 12px;
+  font-size: 14px;
 }
 
+/* 見出し行 */
 .summary-table th {
-  background: #f0f4fa;
+  background: #eef3ff;
   text-align: left;
+  font-weight: bold;
 }
 
+/* 金額列を右寄せ */
+.summary-table td:nth-child(2) {
+  text-align: right;
+}
+
+/* 合計行 */
 .summary-table .total td {
-  background: #e8f1ff;
-  font-size: 1.1rem;
+  background: #dde8ff;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .actions {
   text-align: center;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+.pdf-btn,
+.back-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* PDFボタン */
+.pdf-btn {
+  background: #2b5fd9;
+  color: #fff;
+}
+
+.pdf-btn:hover {
+  background: #1f4fc4;
+}
+
+/* 戻るボタン */
+.back-btn {
+  background: #ccc;
+  color: #333;
+}
+
+.back-btn:hover {
+  background: #b5b5b5;
 }
