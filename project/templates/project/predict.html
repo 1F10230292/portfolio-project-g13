@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>価格予測フォーム</h2>
+<form method="POST">
+  {% csrf_token %}
+  <label>延べ床面積（㎡）:</label>
+  <input type="number" name="延べ床面積" step="0.1"><br>
+
+  <label>土地面積（㎡）:</label>
+  <input type="number" name="土地面積" step="0.1"><br>
+
+  <label>築年数:</label>
+  <input type="number" name="築年数"><br>
+
+  <label>部屋数:</label>
+  <input type="number" name="部屋数"><br>
+
+  <label>用途地域:</label>
+  <select name="用途地域">
+    <option value="住居系">住居系</option>
+    <option value="商業系">商業系</option>
+    <option value="工業系">工業系</option>
+  </select><br>
+
+  <label>接道状況:</label>
+  <select name="接道状況">
+    <option value="その他">その他</option>
+    <option value="接道なし">接道なし</option>
+    <option value="角地等">角地等</option>
+  </select><br>
+
+  <label>建物構造:</label>
+  <select name="建物構造">
+    <option value="木造">木造</option>
+    <option value="非木造">非木造</option>
+  </select><br>
+
+  <label>駐車場あり:</label>
+  <input type="checkbox" name="駐車場あり"><br>
+
+  <label>建ぺい率（%）:</label>
+  <input type="number" name="建ぺい率" step="0.1"><br>
+
+  <label>容積率（%）:</label>
+  <input type="number" name="容積率" step="0.1"><br>
+
+  <label>地価スコア:</label>
+  <input type="number" name="地価スコア" step="0.1"><br>
+
+  <label>交通ランク:</label>
+  <input type="number" name="交通ランク" step="0.1"><br>
+
+  <button type="submit">予測する</button>
+</form>
+
+{% if prediction %}
+<h3>予測価格: {{ prediction }} 万円</h3>
+{% endif %}
+{% endblock %}

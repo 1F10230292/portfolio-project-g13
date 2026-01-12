@@ -20,7 +20,7 @@ urlpatterns = [
     path('house/<int:pk>/operation/compare/', views.house_operation_compare, name='house_operation_compare'),
     path('house/<int:pk>/support/', views.house_support, name='house_support'),
     path('house/<int:pk>/measures/', views.vacant_home_measures, name='vacant_home_measures'),
-    path('house/<int:pk>/estimate/', views.estimate_house_price, name='estimate_house_price'),
+    # path('house/<int:pk>/estimate/', views.estimate_house_price, name='estimate_house_price'),
     path('house/<int:pk>/renovation/', views.renovation_guide, name='renovation_guide'),
     path('house/<int:pk>/reform_guide/', views.reform_guide, name='reform_guide'),
     path('house/<int:pk>/private_lodging/', views.private_lodging, name='private_lodging'),
@@ -29,4 +29,5 @@ urlpatterns = [
     path("house/<int:pk>/house_reform_b3/", views.house_reform_b3, name="house_reform_b3"),
     path("house/<int:pk>/summary/", views.inheritance_summary, name="inheritance_summary"),
     path("house/<int:pk>/pdf/", views.inheritance_pdf, name="inheritance_pdf"),
+    path("predict/", views.predict_view, name="predict"),
 ]
