@@ -11,7 +11,6 @@
 <body>
     <h1>ログイン</h1>
 
-    <!-- メッセージ表示 -->
     {% if messages %}
         <div class="messages">
         {% for message in messages %}
@@ -20,18 +19,19 @@
         </div>
     {% endif %}
 
-    <form method="post">
+    <form method="post" autocomplete="off">
         {% csrf_token %}
         <label>ユーザー名:
-            <input type="text" name="username" required>
+            <input type="text" name="username" required autocomplete="off">
         </label>
         <label>パスワード:
-            <input type="password" name="password" required>
+            <input type="password" name="password" required autocomplete="new-password">
         </label>
         <button type="submit">ログイン</button>
     </form>
+    
     <p class="login-footer">
-    アカウントをお持ちでない場合は <a href="{% url 'project:register' %}">新規登録</a>
-</p>
+        アカウントをお持ちでない場合は <a href="{% url 'project:register' %}">新規登録</a>
+    </p>
 </body>
 </html>

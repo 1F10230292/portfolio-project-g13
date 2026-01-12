@@ -26,9 +26,9 @@ def login_view(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
+        
         if user is not None:
             login(request, user)
-            messages.success(request, f"{username} さん、ログインしました。")
             # すでに資産が登録されているか確認
             if Inheritance.objects.filter(user=user).exists():
                 inheritance = Inheritance.objects.filter(user=user).latest('id')
@@ -36,7 +36,9 @@ def login_view(request):
             else:
                 return redirect('project:inheritance_input')
         else:
+            # ログイン失敗時のエラーメッセージは残しておくのが一般的です
             messages.error(request, "ユーザー名またはパスワードが間違っています。")
+            
     return render(request, 'project/login.html')
 
 
@@ -86,15 +88,22 @@ def transfer_password_view(request, pk):
         'deceased_name': inheritance.deceased_name
     })
 
+@login_required
+def heir_dashboard_view(request, pk):
+    inheritance = get_object_or_404(Inheritance, pk=pk)
+    return render(request, 'project/heir_dashboard.html', {
+        'inheritance': inheritance
+    })
+
+# views.py の 101行目あたり
 def heir_login(request):
     """被相続人用ログインページ"""
     if request.method == 'POST':
         password = request.POST.get('transfer_password')
         try:
             inheritance = Inheritance.objects.get(transfer_password=password)
-            return render(request, 'project/heir_dashboard.html', {
-                'inheritance': inheritance
-            })
+            # render ではなく redirect に変更
+            return redirect('project:heir_dashboard', pk=inheritance.pk)
         except Inheritance.DoesNotExist:
             return render(request, 'project/heir_login.html', {
                 'error': "パスワードが間違っています。"
@@ -116,7 +125,7 @@ def house_detail_input(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "不動産情報を保存しました。")
-            return redirect("project:house_suggestion", pk=inheritance.pk)
+            return redirect("project:heir_dashboard", pk=inheritance.pk)
     else:
         form = HouseDetailForm(instance=inheritance)
     return render(request, "project/house_detail_input.html", {"form": form, "inheritance": inheritance})

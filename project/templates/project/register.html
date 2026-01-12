@@ -1,9 +1,11 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="notranslate">
 <head>
     <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    
     <title>新規登録</title>
     <link rel="stylesheet" href="{% static 'project/css/register.css' %}">
     <script src="{% static 'project/js/register.js' %}" defer></script>
@@ -11,16 +13,7 @@
 <body>
     <h1>新規登録</h1>
 
-    <!-- メッセージ表示 -->
-    {% if messages %}
-        <div class="messages">
-        {% for message in messages %}
-            <p>{{ message }}</p>
-        {% endfor %}
-        </div>
-    {% endif %}
-
-    <form method="post">
+    <form method="post" autocomplete="off">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">登録</button>

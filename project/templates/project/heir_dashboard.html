@@ -20,6 +20,15 @@
             <p class="house-link">
                 🏠 <a href="{% url 'project:house_detail' inheritance.pk %}">不動産の詳細を見る</a>
             </p>
+
+            {% if inheritance.house_address %}
+                <div class="suggestion-box" style="margin-top: 20px; padding: 15px; background-color: #f0f8ff; border-radius: 8px; border: 1px solid #007bff;">
+                    <p style="margin: 0 0 10px 0;"><strong>不動産情報の保存が完了しています</strong></p>
+                    <a href="{% url 'project:house_suggestion' inheritance.pk %}" class="btn-suggestion" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+                        おすすめの活用プランを見る
+                    </a>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 
