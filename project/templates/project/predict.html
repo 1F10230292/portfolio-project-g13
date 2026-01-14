@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>価格予測フォーム</h2>
-<form method="POST">
+{% load static %}
+<link rel="stylesheet" href="{% static 'project/css/house_sell.css' %}">
+
+<h2 class="mb-4">価格予測フォーム</h2>
+
+<form method="POST" class="text-start">
   {% csrf_token %}
+
+  <label>家の面積（㎡）:</label>
+  <input type="number" name="家面積" step="0.1"><br>
+
   <label>延べ床面積（㎡）:</label>
   <input type="number" name="延べ床面積" step="0.1"><br>
 
@@ -44,16 +52,66 @@
   <label>容積率（%）:</label>
   <input type="number" name="容積率" step="0.1"><br>
 
-  <label>地価スコア:</label>
-  <input type="number" name="地価スコア" step="0.1"><br>
+  <label>最寄り駅:</label>
+  <select name="駅名">
+    <option value="豊岡駅">豊岡駅</option>
+    <option value="江原駅">江原駅</option>
+    <option value="国府駅">国府駅</option>
+    <option value="その他">その他の駅</option>
+  </select><br>
 
-  <label>交通ランク:</label>
-  <input type="number" name="交通ランク" step="0.1"><br>
+  <label>地区名:</label>
+  <select name="地区名">
+    <option value="中央町">中央町</option>
+    <option value="若松町">若松町</option>
+    <option value="千代田町">千代田町</option>
+    <option value="城南町">城南町</option>
+    <option value="弥栄町">弥栄町</option>
+    <option value="桜町">桜町</option>
+    <option value="九日市上町">九日市上町</option>
+    <option value="九日市中町">九日市中町</option>
+    <option value="九日市下町">九日市下町</option>
+    <option value="城崎町湯島">城崎町湯島</option>
+    <option value="出石町">出石町</option>
+    <option value="日高町">日高町</option>
+    <option value="竹野町">竹野町</option>
+    <option value="但東町">但東町</option>
+    <option value="その他">その他</option>
+  </select><br>
 
-  <button type="submit">予測する</button>
+  <button type="submit" class="btn btn-primary mt-3">予測する</button>
 </form>
 
 {% if prediction %}
-<h3>予測価格: {{ prediction }} 万円</h3>
+<h3 class="mt-4">予測価格: {{ prediction }} 万円</h3>
+{% else %}
+<h3 class="mt-4">値を入してください</h3>
 {% endif %}
+</form>
+
+<script>
+  const fields = document.querySelectorAll("input, select");
+
+  fields.forEach(field => {
+    const key = field.name;
+
+    const saved = localStorage.getItem(key);
+    if (saved !== null) {
+      if (field.type === "checkbox") {
+        field.checked = saved === "true";
+      } else {
+        field.value = saved;
+      }
+    }
+
+    field.addEventListener("input", () => {
+      if (field.type === "checkbox") {
+        localStorage.setItem(key, field.checked);
+      } else {
+        localStorage.setItem(key, field.value);
+      }
+    });
+  });
+</script>
+
 {% endblock %}

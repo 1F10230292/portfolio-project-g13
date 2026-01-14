@@ -275,23 +275,69 @@ with open("model/model.pkl", "rb") as f:
 with open("model/scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
+def transport_rank(x):
+    if x is None:
+        return 0
+    if x == '豊岡駅':
+        return 3
+    elif x in ['江原駅', '国府駅']:
+        return 2
+    elif '駅' in x:
+        return 1
+    else:
+        return 0
+    
+def assign_land_price_score(district):
+    if district is None:
+        return 2  # デフォルト
+
+    if district in [
+        '中央町', '若松町', '千代田町', '城南町', '弥栄町',
+        '桜町', '九日市上町', '九日市中町', '九日市下町'
+    ]:
+        return 5
+
+    if district.startswith('城崎町'):
+        return 5
+
+    if district.startswith('出石町'):
+        return 3
+
+    if district.startswith('日高町'):
+        return 3
+
+    if district.startswith('竹野町'):
+        return 3
+
+    if district.startswith('但東町'):
+        return 2
+
+    if district in ['戸牧', '中陰', '下陰', '高屋', '福田', '正法寺']:
+        return 4
+
+    return 2
 def predict_view(request):
+
     if request.method == "POST":
         # 入力値の取得
+        house_area = float(request.POST.get("家面積") or 0)
         floor_area = float(request.POST.get("延べ床面積"))
         land_area = float(request.POST.get("土地面積"))
         age = float(request.POST.get("築年数"))
         rooms = float(request.POST.get("部屋数"))
-        use_type = request.POST.get("用途地域")  # '住居系', '商業系', '工業系'
-        road_type = request.POST.get("接道状況")  # '接道なし', '角地等', 'その他'
-        structure = request.POST.get("建物構造")  # '木造', '非木造'
+        use_type = request.POST.get("用途地域")
+        road_type = request.POST.get("接道状況")
+        structure = request.POST.get("建物構造")
         parking = request.POST.get("駐車場あり") == "on"
         coverage = float(request.POST.get("建ぺい率"))
         capacity = float(request.POST.get("容積率"))
-        land_score = float(request.POST.get("地価スコア"))
-        transport_rank = float(request.POST.get("交通ランク"))
+        station = request.POST.get("駅名")
+        district = request.POST.get("地区名")
 
-        # カテゴリ変数の one-hot（簡易）
+        transport_rank_value = transport_rank(station)
+        land_score_value = assign_land_price_score(district)
+
+        # one-hot
         use_res = 1 if use_type == "住居系" else 0
         use_com = 1 if use_type == "商業系" else 0
         use_ind = 1 if use_type == "工業系" else 0
@@ -307,7 +353,7 @@ def predict_view(request):
             "築年数": age,
             "用途地域_正規化_商業系": use_com,
             "面積_築年数": floor_area / (age + 1),
-            "家面積_数値": floor_area,
+            "家面積_数値": house_area,
             "用途地域_正規化_工業系": use_ind,
             "建ぺい率_正規化": coverage,
             "土地_建蔽": land_area * coverage,
@@ -316,58 +362,36 @@ def predict_view(request):
             "接道_容積": road_none * capacity,
             "実効容積率": floor_area / land_area,
             "用途地域_正規化_住居系": use_res,
-            "立地_築年数": transport_rank / (age + 1),
+            "立地_築年数": transport_rank_value / (age + 1),
             "土地面積_数値": land_area,
             "接道状況_正規化_角地等": road_corner,
             "1部屋あたり面積": floor_area / rooms,
             "部屋数": rooms,
             "面積_部屋数": floor_area / (rooms + 0.5),
             "延べ床面積_数値": floor_area,
-            "地価スコア": land_score,
             "駐車場_あり": parking_flag,
             "容積率_正規化": capacity,
             "築年数_構造": age * non_wood,
             "接道状況_正規化_接道なし": road_none,
             "建物構造_正規化_非木造": non_wood,
-            "地勢_数値": 0.0,  # 未入力なら仮で0
-            "交通_ランク": transport_rank,
-            "地価_交通": land_score * transport_rank,
+            "地勢_数値": 0.0,
+            "交通_ランク": transport_rank_value,
+            "地価スコア": land_score_value,
+            "地価_交通": land_score_value * transport_rank_value,
             "LDKあり": 0.0,
             "Sあり": 0.0
         }
 
         feature_order = [
-    "築年数",
-    "用途地域_正規化_商業系",
-    "面積_築年数",
-    "家面積_数値",
-    "用途地域_正規化_工業系",
-    "建ぺい率_正規化",
-    "土地_建蔽",
-    "実効建蔽率",
-    "土地_容積",
-    "接道_容積",
-    "実効容積率",
-    "用途地域_正規化_住居系",
-    "立地_築年数",
-    "土地面積_数値",
-    "接道状況_正規化_角地等",
-    "1部屋あたり面積",
-    "部屋数",
-    "面積_部屋数",
-    "延べ床面積_数値",
-    "地価スコア",
-    "駐車場_あり",
-    "容積率_正規化",
-    "築年数_構造",
-    "接道状況_正規化_接道なし",
-    "建物構造_正規化_非木造",
-    "地勢_数値",
-    "交通_ランク",
-    "地価_交通",
-    "LDKあり",
-    "Sあり",
-]
+            "築年数", "用途地域_正規化_商業系", "面積_築年数", "家面積_数値",
+            "用途地域_正規化_工業系", "建ぺい率_正規化", "土地_建蔽", "実効建蔽率",
+            "土地_容積", "接道_容積", "実効容積率", "用途地域_正規化_住居系",
+            "立地_築年数", "土地面積_数値", "接道状況_正規化_角地等",
+            "1部屋あたり面積", "部屋数", "面積_部屋数", "延べ床面積_数値",
+            "地価スコア", "駐車場_あり", "容積率_正規化", "築年数_構造",
+            "接道状況_正規化_接道なし", "建物構造_正規化_非木造",
+            "地勢_数値", "交通_ランク", "地価_交通", "LDKあり", "Sあり"
+        ]
 
         input_array = np.array([features[k] for k in feature_order]).reshape(1, -1)
         input_scaled = scaler.transform(input_array)
@@ -375,7 +399,10 @@ def predict_view(request):
         pred_price = np.expm1(pred_log)
 
         return render(request, "project/predict.html", {
-            "prediction": int(pred_price)
-        })
+        "prediction": int(pred_price),
+        "form": request.POST
+    })
 
-    return render(request, "project/predict.html")
+    return render(request, "project/predict.html", {
+    "form": {}
+})
