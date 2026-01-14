@@ -1,0 +1,125 @@
+/* ベース背景と文字色 */
+body {
+    background-color: #f4f7f9;
+    color: #333;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* タイトルの装飾 */
+h2.mb-4 {
+    color: #1a253c;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* フォームの外枠（カード風） */
+form.text-start {
+    max-width: 650px;
+    margin: 0 auto 20px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* ラベルのスタイル */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #1a253c;
+    font-size: 0.95rem;
+}
+
+/* 入力・選択項目の共通スタイル */
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* 幅のズレ防止 */
+}
+
+/* フォーカス時の強調（Topページの色と連動） */
+input:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+/* チェックボックスのスタイル調整 */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* 予測結果の表示エリア */
+h3.mt-4 {
+    max-width: 650px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* 結果が出ている時（青系） */
+h3.mt-4:not(:contains("値を入してください")) {
+    background-color: #e7f3ff;
+    color: #007bff;
+    border: 1px solid #b3d7ff;
+}
+
+/* 警告/未入力時（グレー系） */
+h3.mt-4 {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+/* ボタンの共通設定 */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+}
+
+/* 予測するボタン（Topページと同じ青） */
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* リセットボタン（控えめなグレー） */
+.btn-secondary {
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e0;
+}
