@@ -89,13 +89,18 @@
 {% endif %}
 </form>
 
+
+<button type="button" id="resetBtn" class="btn btn-secondary mt-3">入力をリセット</button>
+
 <script>
+  // 全 input / select を対象にする
   const fields = document.querySelectorAll("input, select");
 
+  // ページ読み込み時に localStorage から復元
   fields.forEach(field => {
     const key = field.name;
-
     const saved = localStorage.getItem(key);
+
     if (saved !== null) {
       if (field.type === "checkbox") {
         field.checked = saved === "true";
@@ -104,6 +109,7 @@
       }
     }
 
+    // 入力のたびに保存
     field.addEventListener("input", () => {
       if (field.type === "checkbox") {
         localStorage.setItem(key, field.checked);
@@ -112,6 +118,22 @@
       }
     });
   });
-</script>
 
+  // リセットボタン
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    fields.forEach(field => {
+      const key = field.name;
+      localStorage.removeItem(key);  // localStorage から削除
+
+      if (field.type === "checkbox") {
+        field.checked = false;
+      } else {
+        field.value = "";
+      }
+    });
+
+    alert("入力内容をリセットしました");
+  });
+
+</script>
 {% endblock %}
