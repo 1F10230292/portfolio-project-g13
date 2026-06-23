@@ -1,7 +1,6 @@
 # 分析モデルの所在（自分が担当した箇所）
-## こちらをメインに評価していただくと幸いです。
-
-https://github.com/1F10230292/portfolio-project-g13/commit/5d192e5967cba15a2358312f3a67fff7cf0c4483#diff-fec55f0635a4e7697fee00f10101bf9540e07892d3fc59ba449cb0415dc53635
+##### こちらをメインに評価していただくと幸いです。
+project/templates/project/predict.html
 
 # プロジェクト名（ここにアプリの名前やテーマを記述）
 
